@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   position: fixed;
   width: 100%;
-  margin-top: 1rem;
+  padding: 1rem 2rem;
 `
 export const Content = styled.div`
   max-width: 1280px;

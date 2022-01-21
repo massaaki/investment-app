@@ -3,19 +3,18 @@ import * as S from './styles';
 
 
 type NavItemProps = {
-  name: string;
+  title: string;
   href: string;
   filled?: boolean;
+  onClick?: () => void;
 }
 
 
-export const NavItem = ({ name, href, filled = false }: NavItemProps) => {
+export const NavItem = ({ title, href, filled = false, onClick }: NavItemProps) => {
   return (
     <S.Content filled={filled}>
       <Link href={href}>
-        <a>
-          {name}
-        </a>
+        <a onClick={onClick ? onClick : () => {}}>{title}</a>
       </Link>
     </S.Content>
   )

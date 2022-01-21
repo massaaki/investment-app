@@ -74,7 +74,7 @@ export const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobal
         url('/fonts/Monteserrat/Montserrat-Thin.ttf');
   }
 
-  ul {
+  li {
     list-style: none;
   }
   a {

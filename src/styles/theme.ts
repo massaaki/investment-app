@@ -19,6 +19,7 @@ export default {
   colors: {
     lightBlue500: '#3AC6D9',
     white500: '#FBFBFB',
-    blackOpac500: 'rgba(68, 68, 68, 0.5)'
+    blackOpac500: 'rgba(68, 68, 68, 0.5)',
+    black: '#242020',
   }
 }
