@@ -1,4 +1,5 @@
 
+import Link from 'next/link';
 import { NavList } from 'components/NavList'
 import { Logo } from '../../icons/Logo'
 
@@ -9,7 +10,11 @@ export const Header = () => {
     <S.Container>
       <S.Content>
         <div>
-          <Logo />
+          <Link href="/">
+            <a>
+              <Logo />
+            </a>
+          </Link>
         </div>
         <NavList />
       </S.Content>
