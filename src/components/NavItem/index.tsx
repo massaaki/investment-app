@@ -5,12 +5,13 @@ import * as S from './styles';
 type NavItemProps = {
   name: string;
   href: string;
+  filled?: boolean;
 }
 
 
-export const NavItem = ({ name, href }: NavItemProps) => {
+export const NavItem = ({ name, href, filled = false }: NavItemProps) => {
   return (
-    <S.Content>
+    <S.Content filled={filled}>
       <Link href={href}>
         <a>
           {name}
