@@ -74,6 +74,13 @@ export const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobal
         url('/fonts/Monteserrat/Montserrat-Thin.ttf');
   }
 
+  ul {
+    list-style: none;
+  }
+  a {
+    text-decoration: none; 
+    color: unset;
+  }
 
   * {
     margin: 0;
@@ -93,8 +100,7 @@ export const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobal
   ${({ theme }) => css`
     body {
       font-family: ${theme.font.family};
-      color: ${theme.colors.lightBlue500};
-      font-weight: ${theme.font.weights.black};
+      font-weight: ${theme.font.weights.medium};
       font-size: ${theme.font.sizes.medium};
     }
   `}

@@ -1,5 +1,9 @@
-export default function Home() {
+import { Home } from '../template/Home'
+
+export default function HomePage() {
   return (
-    <p>Bull Bear app</p>
+    <>
+      <Home />
+    </>
   )
 }
