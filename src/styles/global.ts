@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { createGlobalStyle, DefaultTheme, GlobalStyleComponent, css } from 'styled-components';
 
 
@@ -78,7 +79,7 @@ export const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobal
     list-style: none;
   }
   a {
-    text-decoration: none; 
+    text-decoration: none;
     color: unset;
   }
 

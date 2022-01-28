@@ -1,9 +1,9 @@
-import { ApolloClient, HttpLink, NormalizedCacheObject, InMemoryCache, from } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache, from } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-import { useMemo } from 'react';
 
 
-let apolloClient: ApolloClient<NormalizedCacheObject | null>;
+
+// let apolloClient: ApolloClient<NormalizedCacheObject | null>;
 
 const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) {

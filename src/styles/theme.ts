@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 export default {
   font: {
     family: "Montserrat, sans-serif",

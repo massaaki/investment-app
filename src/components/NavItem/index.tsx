@@ -14,7 +14,7 @@ export const NavItem = ({ title, href, filled = false, onClick }: NavItemProps) 
   return (
     <S.Content filled={filled}>
       <Link href={href}>
-        <a onClick={onClick ? onClick : () => {}}>{title}</a>
+        <a onClick={onClick}>{title}</a>
       </Link>
     </S.Content>
   )
