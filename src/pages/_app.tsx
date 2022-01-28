@@ -1,19 +1,24 @@
 import { Header } from 'components/Header';
 import { AppProps } from 'next/app'
-
+import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from 'styled-components';
 
+import { createApolloClient } from 'utils/apollo';
 import { GlobalStyles } from '../styles/global';
 import theme from '../styles/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const client = createApolloClient();
+
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Header />
-        <Component {...pageProps} />
-        <GlobalStyles />
-      </ThemeProvider>
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Component {...pageProps} />
+          <GlobalStyles />
+        </ThemeProvider>
+      </ApolloProvider>
     </>
   )
 }
