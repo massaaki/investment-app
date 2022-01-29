@@ -9,8 +9,8 @@ type NavItemProps = {
 }
 
 export const NavItem = ({
-  title,
-  href,
+  title = 'title',
+  href = '/',
   filled = false,
   onClick
 }: NavItemProps) => {
