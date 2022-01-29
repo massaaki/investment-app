@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   ${({ theme }) => css`
@@ -7,23 +6,22 @@ export const Container = styled.div`
     justify-content: flex-end;
     width: 100%;
 
-    @media(min-width: 720px) {
+    @media (min-width: 720px) {
       background: ${theme.colors.blackOpac500};
       padding: 1rem 2rem;
       border-radius: 5rem;
       margin: 0 1rem;
     }
   `}
-`;
-
+`
 
 export const NavGroup = styled.div`
   ${({ theme }) => css`
-    @media(min-width: 760px) {
+    @media (min-width: 760px) {
       display: none;
       pointer-events: none;
     }
-    >li {
+    > li {
       cursor: pointer;
       svg {
         width: 2.5rem;
@@ -32,7 +30,6 @@ export const NavGroup = styled.div`
       }
     }
   `}
-
 `
 
 const navSubGroupModiffer = {
@@ -48,7 +45,7 @@ const navSubGroupModiffer = {
       100% {
         display: block;
         opacity: 1;
-        transform: translate3D(-70%, 0, 0) ;
+        transform: translate3D(-70%, 0, 0);
       }
     }
   `,
@@ -79,28 +76,27 @@ const navSubGroupModiffer = {
 export const CloseButton = styled.li`
   ${({ theme }) => css`
     width: 70%;
-      position: relative;
-      button {
-        top: 2.5rem;
-        right: 0;
-        position: absolute;
-        cursor: pointer;
-        border: 0;
-        background: transparent;
-        svg {
-          width: 2rem;
-          height: 2rem;
-          path {
-            stroke: ${theme.colors.black}
-          }
+    position: relative;
+    button {
+      top: 2.5rem;
+      right: 0;
+      position: absolute;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+      svg {
+        width: 2rem;
+        height: 2rem;
+        path {
+          stroke: ${theme.colors.black};
         }
       }
+    }
   `}
- 
 `
 
 type NavSubGroupProps = {
-  show: boolean;
+  show: boolean
 }
 
 export const NavSubGroup = styled.ul<NavSubGroupProps>`
@@ -111,8 +107,7 @@ export const NavSubGroup = styled.ul<NavSubGroupProps>`
     background: ${theme.colors.white500};
     top: 0;
     height: 100vh;
-    >li {
-      
+    > li {
       height: 4.2rem;
       font-size: 2rem;
       margin-top: 1rem;
@@ -125,16 +120,14 @@ export const NavSubGroup = styled.ul<NavSubGroupProps>`
 
 export const NavSideBySide = styled.ul`
   display: flex;
-  @media(max-width: 760px){
+  @media (max-width: 760px) {
     display: none;
   }
 `
 
 type NavGroupBackgroundProps = {
-  show: boolean;
+  show: boolean
 }
-
-
 
 const navGroupBackgroundModiffier = {
   show: () => css`
@@ -168,11 +161,13 @@ const navGroupBackgroundModiffier = {
 
 export const NavGroupBackground = styled.div<NavGroupBackgroundProps>`
   ${({ show }) => css`
-    ${show ? navGroupBackgroundModiffier.show() : navGroupBackgroundModiffier.hidden()}
-    
+    ${show
+      ? navGroupBackgroundModiffier.show()
+      : navGroupBackgroundModiffier.hidden()}
+
     content: '';
     position: absolute;
-    background: rgba(0,0,0, 0.7);
+    background: rgba(0, 0, 0, 0.7);
     opacity: 0;
     width: 100%;
     top: 0;

@@ -1,5 +1,4 @@
-import styled, { css } from "styled-components";
-
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   background-image: url('images/home-header-bg.png');
@@ -23,7 +22,7 @@ export const Hero = styled.div`
       font-size: 6rem;
       max-width: 720px;
     }
-    div{
+    div {
       margin-top: 2rem;
       a {
         background: ${theme.colors.lightBlue500};
@@ -35,5 +34,4 @@ export const Hero = styled.div`
       }
     }
   `}
-
-`;
+`

@@ -1,8 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { createGlobalStyle, DefaultTheme, GlobalStyleComponent, css } from 'styled-components';
+import {
+  createGlobalStyle,
+  DefaultTheme,
+  GlobalStyleComponent,
+  css
+} from 'styled-components'
 
-
-export const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
+export const GlobalStyles: GlobalStyleComponent<
+  {},
+  DefaultTheme
+> = createGlobalStyle`
   @font-face {
     font-family: 'Montserrat';
     font-style: normal;
@@ -105,4 +112,4 @@ export const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobal
       font-size: ${theme.font.sizes.medium};
     }
   `}
-`;
+`

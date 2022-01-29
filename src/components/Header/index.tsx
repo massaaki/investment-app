@@ -1,5 +1,4 @@
-
-import Link from 'next/link';
+import Link from 'next/link'
 import { NavList } from 'components/NavList'
 import { Logo } from '../../icons/Logo'
 

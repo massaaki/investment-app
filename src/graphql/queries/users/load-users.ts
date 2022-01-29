@@ -1,4 +1,4 @@
-import { gql, QueryHookOptions, useQuery } from '@apollo/client';
+import { gql, QueryHookOptions, useQuery } from '@apollo/client'
 
 export const QUERY_USERS = gql`
   query {
@@ -6,9 +6,9 @@ export const QUERY_USERS = gql`
   }
 `
 interface UserData {
-  sayHello: string;
+  sayHello: string
 }
 
 export function useQueryUsers(options?: QueryHookOptions) {
-  return useQuery<UserData>(QUERY_USERS, options);
+  return useQuery<UserData>(QUERY_USERS, options)
 }

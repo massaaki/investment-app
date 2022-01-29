@@ -1,6 +1,6 @@
 export default {
   font: {
-    family: "Montserrat, sans-serif",
+    family: 'Montserrat, sans-serif',
     weights: {
       thin: 200,
       light: 300,
@@ -12,13 +12,13 @@ export default {
       black: 900
     },
     sizes: {
-      medium: '1.6rem',
+      medium: '1.6rem'
     }
   },
   colors: {
     lightBlue500: '#3AC6D9',
     white500: '#FBFBFB',
     blackOpac500: 'rgba(68, 68, 68, 0.5)',
-    black: '#242020',
+    black: '#242020'
   }
 }

@@ -1,13 +1,12 @@
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { GrClose } from 'react-icons/gr'
-import { NavItem } from "components/NavItem"
+import { NavItem } from 'components/NavItem'
 
-import * as S from './styles';
-import { useState } from 'react';
-
+import * as S from './styles'
+import { useState } from 'react'
 
 export const NavList = () => {
-  const [showRefGroup, setShowRefGroup] = useState(false);
+  const [showRefGroup, setShowRefGroup] = useState(false)
 
   function handleShowRefGroup() {
     setShowRefGroup(!showRefGroup)
@@ -27,11 +26,14 @@ export const NavList = () => {
       </S.NavSideBySide>
 
       <S.NavGroup>
-
-        <li onClick={handleShowRefGroup}><GiHamburgerMenu /></li>
-        <S.NavGroupBackground show={showRefGroup} onClick={handleShowRefGroup} />
+        <li onClick={handleShowRefGroup}>
+          <GiHamburgerMenu />
+        </li>
+        <S.NavGroupBackground
+          show={showRefGroup}
+          onClick={handleShowRefGroup}
+        />
         <S.NavSubGroup show={showRefGroup}>
-
           <S.CloseButton>
             <button onClick={handleShowRefGroup}>
               <GrClose />
@@ -41,11 +43,8 @@ export const NavList = () => {
           <NavItem href="/" title="home" onClick={handleClose} />
           <NavItem href="/" title="blog" onClick={handleClose} />
           <NavItem href="/" title="about" onClick={handleClose} />
-
         </S.NavSubGroup>
-
       </S.NavGroup>
-
     </S.Container>
   )
 }

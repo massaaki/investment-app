@@ -1,18 +1,16 @@
-import styled, { css, DefaultTheme } from "styled-components";
+import styled, { css, DefaultTheme } from 'styled-components'
 
 type ContentProps = {
-  filled: boolean;
+  filled: boolean
 }
 
-
-const ContentModifiers = (theme: DefaultTheme) => (
+const ContentModifiers = (theme: DefaultTheme) =>
   css`
     background: ${theme.colors.lightBlue500};
     color: ${theme.colors.white500};
     padding: 1rem 1.5rem;
     border-radius: 4rem;
   `
-)
 
 export const Content = styled.li<ContentProps>`
   ${({ theme, filled }) => css`
@@ -23,10 +21,6 @@ export const Content = styled.li<ContentProps>`
     font-weight: ${theme.font.weights.bold};
     margin-left: 1.5rem;
 
-
-
     ${filled && ContentModifiers(theme)};
-
-    
   `}
-`;
+`
