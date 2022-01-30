@@ -38,12 +38,13 @@ export default {
 
     white500: '#FBFBFB',
 
-    blackOpac500: 'rgba(68, 68, 68, 0.5)',
+    blackOpac500: 'rgba(30, 28, 28, 0.6)',
     black: '#242020',
 
+    gray50: '#F2EFEF',
     gray100: '#EAEAEA',
     gray500: '#8F8F8F',
-    gray800: '2E2F42',
+    gray800: '#2E2F42',
 
     red500: '#C34848'
   }

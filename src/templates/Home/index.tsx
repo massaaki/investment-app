@@ -1,3 +1,4 @@
+import { Button } from 'components/single/Button'
 import { useQueryUsers } from 'graphql/queries/users/load-users'
 // import { MUTATION_CREATE_USER } from 'graphql/mutations/users/create-user';
 // import { useMutation } from '@apollo/client';
@@ -35,8 +36,10 @@ export const Home = () => {
         <S.Hero>
           <h1>A data driven Investment platform</h1>
           <div>
-            <Link href="/">
-              <a>Getting started</a>
+            <Link href="/signup">
+              <Button as="a" size="large">
+                Getting started
+              </Button>
             </Link>
           </div>
         </S.Hero>

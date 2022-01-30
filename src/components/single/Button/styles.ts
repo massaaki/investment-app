@@ -12,7 +12,7 @@ export const Wrapper = styled.button<WrapperProps>`
     align-items: center;
     justify-content: center;
     border: 0;
-    border-radius: 0.5rem;
+    border-radius: 10rem;
     font-weight: ${theme.font.weights.extraBold};
     padding: ${theme.spacings.xxsmall};
     background: ${theme.colors.blueGrandient500};
