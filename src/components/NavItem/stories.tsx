@@ -1,8 +1,4 @@
-import {
-  ComponentMeta,
-  ComponentStory,
-  ComponentStoryFn
-} from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { NavItem } from '.'
 
