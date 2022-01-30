@@ -25,7 +25,7 @@ export const Hero = styled.div`
     div {
       margin-top: 2rem;
       a {
-        background: ${theme.colors.lightBlue500};
+        background: ${theme.colors.blueGrandient500};
         color: ${theme.colors.white500};
         font-weight: ${theme.font.weights.bold};
         font-size: 1.8rem;
