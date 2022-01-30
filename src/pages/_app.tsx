@@ -1,4 +1,4 @@
-import { Header } from 'components/Header'
+import { Header } from 'components/combinated/Header'
 import { AppProps } from 'next/app'
 import { ApolloProvider } from '@apollo/client'
 import { ThemeProvider } from 'styled-components'

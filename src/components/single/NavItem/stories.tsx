@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { NavItem } from '.'
 
 export default {
-  title: 'NavItem',
+  title: 'Single/NavItem',
   component: NavItem,
   args: {
     title: 'Some title here',

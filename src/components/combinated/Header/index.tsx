@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { NavList } from 'components/NavList'
-import { Logo } from '../../icons/Logo'
+import { NavList } from 'components/combinated/NavList'
+import { Logo } from '../../../icons/Logo'
 
 import * as S from './styles'
 

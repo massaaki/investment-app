@@ -1,6 +1,6 @@
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { GrClose } from 'react-icons/gr'
-import { NavItem } from 'components/NavItem'
+import { NavItem } from 'components/single/NavItem'
 
 import * as S from './styles'
 import { useState } from 'react'

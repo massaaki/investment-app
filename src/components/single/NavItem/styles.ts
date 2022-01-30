@@ -6,7 +6,7 @@ type ContentProps = {
 
 const ContentModifiers = (theme: DefaultTheme) =>
   css`
-    background: ${theme.colors.lightBlue500};
+    background: ${theme.colors.blueGrandient500};
     color: ${theme.colors.white500};
     padding: 1rem 1.5rem;
     border-radius: 4rem;

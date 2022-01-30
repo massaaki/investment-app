@@ -4,7 +4,7 @@ import { TextField, TextFieldProps } from '.'
 import { FaUserAlt } from 'react-icons/fa'
 
 export default {
-  title: 'TextField',
+  title: 'Single/TextField',
   component: TextField
 } as ComponentMeta<typeof TextField>
 

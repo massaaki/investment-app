@@ -27,7 +27,7 @@ exports[`<Header /> should 1`] = `
   color: #FBFBFB;
   font-weight: 700;
   margin-left: 1.5rem;
-  background: #3AC6D9;
+  background: linear-gradient(90deg,rgba(116,129,231,1) 0%,rgba(58,198,217,1) 100%);
   color: #FBFBFB;
   padding: 1rem 1.5rem;
   border-radius: 4rem;

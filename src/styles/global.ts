@@ -85,10 +85,6 @@ export const GlobalStyles: GlobalStyleComponent<
   li {
     list-style: none;
   }
-  a {
-    text-decoration: none;
-    color: unset;
-  }
 
   * {
     margin: 0;
@@ -110,6 +106,13 @@ export const GlobalStyles: GlobalStyleComponent<
       font-family: ${theme.font.family};
       font-weight: ${theme.font.weights.medium};
       font-size: ${theme.font.sizes.medium};
+    }
+    button,
+    a {
+      font-family: ${theme.font.family};
+      cursor: pointer;
+      text-decoration: none;
+      color: unset;
     }
   `}
 `

@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { NavList } from '.'
 
 export default {
-  title: 'NavList',
+  title: 'Combinated/NavList',
   component: NavList,
   parameters: {
     backgrounds: {

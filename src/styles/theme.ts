@@ -31,7 +31,10 @@ export default {
     xxlarge: '5.6rem'
   },
   colors: {
-    lightBlue500: '#3AC6D9',
+    blue200: '#3AC6D9',
+    blue500: '#7481e7',
+    blueGrandient500:
+      'linear-gradient(90deg, rgba(116,129,231,1) 0%, rgba(58,198,217,1) 100%)',
 
     white500: '#FBFBFB',
 
