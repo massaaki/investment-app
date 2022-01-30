@@ -22,7 +22,7 @@ export const NavList = () => {
         <NavItem href="/" title="home" />
         <NavItem href="/" title="blog" />
         <NavItem href="/" title="about" />
-        <NavItem href="/" title="login" filled />
+        <NavItem href="/signin" title="login" filled />
       </S.NavSideBySide>
 
       <S.NavGroup>
