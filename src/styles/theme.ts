@@ -15,6 +15,15 @@ export default {
       medium: '1.6rem'
     }
   },
+  spacings: {
+    xxsmall: '0.8rem',
+    xsmall: '1.6rem',
+    small: '2.4rem',
+    medium: '3.2rem',
+    large: '4.0rem',
+    xlarge: '4.8rem',
+    xxlarge: '5.6rem'
+  },
   colors: {
     lightBlue500: '#3AC6D9',
     white500: '#FBFBFB',
