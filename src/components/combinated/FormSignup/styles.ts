@@ -4,6 +4,7 @@ import * as TextFieldStyles from 'components/single/TextField/styles'
 import * as ButtonStyles from 'components/single/Button/styles'
 
 export const Wrapper = styled.div`
+  min-height: 20rem;
   // Single components position
   ${({ theme }) => css`
     ${TextFieldStyles.Wrapper} {
@@ -13,4 +14,14 @@ export const Wrapper = styled.div`
       margin: ${theme.spacings.small} auto ${theme.spacings.xsmall};
     }
   `}
+`
+
+export const WrapperLoading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20rem;
+`
+export const Loading = styled.img`
+  width: 4rem;
 `

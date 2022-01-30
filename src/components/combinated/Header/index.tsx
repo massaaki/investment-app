@@ -5,13 +5,10 @@ import { NavList } from 'components/combinated/NavList'
 import { Logo } from '../../../icons/Logo'
 
 import * as S from './styles'
-import { useEffect } from 'react'
 
 export const Header = () => {
   const { asPath } = useRouter()
-  useEffect(() => {
-    console.log('asPath..:', asPath)
-  }, [asPath])
+
   return (
     <S.Container>
       <S.Content>

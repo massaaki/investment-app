@@ -1,5 +1,5 @@
-import { Signup } from 'templates/Signup'
+import { SignupTemplate } from 'templates/Signup'
 
 export default function SignupPage() {
-  return <Signup />
+  return <SignupTemplate />
 }

@@ -5,39 +5,47 @@ import { TextField } from 'components/single/TextField'
 import * as S from './styles'
 import { Button } from 'components/single/Button'
 
-export type FormSignupProps = {
-  signupCallback?: (data: CreateUserRequest) => Promise<void>
-}
-
 export type CreateUserRequest = {
   name: string
   email: string
   password: string
 }
 
-export const FormSignup = ({ signupCallback }: FormSignupProps) => {
+export type FormSignupProps = {
+  signupCallback?: (data: CreateUserRequest) => Promise<void>
+  isLoading?: boolean
+}
+
+export const FormSignup = ({
+  signupCallback,
+  isLoading = false
+}: FormSignupProps) => {
   const [values, setValues] = useState<CreateUserRequest>({
     name: '',
     email: '',
     password: ''
   })
 
-  function onSubmit(e: FormEvent) {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (signupCallback) {
-      signupCallback({
+      await signupCallback({
         name: values.name,
         email: values.email,
         password: values.password
       })
     }
-
-    console.log('submit', values)
   }
 
   function onInputChange(field: string, value: string) {
     setValues((s) => ({ ...s, [field]: value }))
   }
+  if (isLoading)
+    return (
+      <S.WrapperLoading>
+        <S.Loading src="/images/dots.svg" alt="" />
+      </S.WrapperLoading>
+    )
 
   return (
     <S.Wrapper>
