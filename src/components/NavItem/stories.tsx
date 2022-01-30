@@ -1,10 +1,19 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import {
+  ComponentMeta,
+  ComponentStory,
+  ComponentStoryFn
+} from '@storybook/react'
 
 import { NavItem } from '.'
 
 export default {
   title: 'NavItem',
   component: NavItem,
+  args: {
+    title: 'Some title here',
+    filled: true,
+    href: '/'
+  },
   parameters: {
     backgrounds: {
       default: 'dark'

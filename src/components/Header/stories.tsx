@@ -14,4 +14,4 @@ export default {
   }
 } as ComponentMeta<typeof Header>
 
-export const Primary: ComponentStory<typeof Header> = () => <Header />
+export const Default: ComponentStory<typeof Header> = () => <Header />
