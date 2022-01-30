@@ -12,7 +12,13 @@ export default {
       black: 900
     },
     sizes: {
-      medium: '1.6rem'
+      xsmall: '1.2rem',
+      small: '1.4rem',
+      medium: '1.6rem',
+      large: '1.8rem',
+      xlarge: '2.0rem',
+      xxlarge: '2.8rem',
+      huge: '5.2rem'
     }
   },
   spacings: {
@@ -26,8 +32,16 @@ export default {
   },
   colors: {
     lightBlue500: '#3AC6D9',
+
     white500: '#FBFBFB',
+
     blackOpac500: 'rgba(68, 68, 68, 0.5)',
-    black: '#242020'
+    black: '#242020',
+
+    gray100: '#EAEAEA',
+    gray500: '#8F8F8F',
+    gray800: '2E2F42',
+
+    red500: '#C34848'
   }
 }
