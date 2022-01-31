@@ -1,5 +1,10 @@
+import OnlyUnauthenticatedRoute from 'components/utils/OnlyUnauthencatedRoute'
 import { SignupTemplate } from 'templates/Signup'
 
 export default function SignupPage() {
-  return <SignupTemplate />
+  return (
+    <OnlyUnauthenticatedRoute>
+      <SignupTemplate />
+    </OnlyUnauthenticatedRoute>
+  )
 }
