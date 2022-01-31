@@ -120,6 +120,7 @@ export const NavSubGroup = styled.ul<NavSubGroupProps>`
 
 export const NavSideBySide = styled.ul`
   display: flex;
+  min-height: 3rem;
   @media (max-width: 760px) {
     display: none;
   }

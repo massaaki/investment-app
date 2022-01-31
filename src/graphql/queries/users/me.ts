@@ -1,13 +1,15 @@
 import { gql, QueryHookOptions, useQuery } from '@apollo/client'
 
-export const QUERY_USERS = gql`
+export const QUERY_ME = gql`
   query {
-    sayHello {
+    me {
       error {
         type
       }
       result {
-        message
+        id
+        name
+        email
       }
     }
   }
@@ -23,9 +25,9 @@ type Response = {
 }
 
 interface UserData {
-  sayHello: Response
+  me: Response
 }
 
-export function useQueryUsers(options?: QueryHookOptions) {
-  return useQuery<UserData>(QUERY_USERS, options)
+export function useQueryMe(options?: QueryHookOptions) {
+  return useQuery<UserData>(QUERY_ME, options)
 }

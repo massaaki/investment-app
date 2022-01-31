@@ -1,11 +1,14 @@
+import { useState, useContext } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { GrClose } from 'react-icons/gr'
+
+import { AuthContext } from 'contexts/AuthContext'
 import { NavItem } from 'components/single/NavItem'
 
 import * as S from './styles'
-import { useState } from 'react'
 
 export const NavList = () => {
+  const { user } = useContext(AuthContext)
   const [showRefGroup, setShowRefGroup] = useState(false)
 
   function handleShowRefGroup() {
@@ -20,9 +23,10 @@ export const NavList = () => {
     <S.Container>
       <S.NavSideBySide>
         <NavItem href="/" title="home" />
-        <NavItem href="/" title="blog" />
-        <NavItem href="/" title="about" />
-        <NavItem href="/signin" title="login" filled />
+        {!!user && <NavItem href="/dashboard" title="dashboard" />}
+        <NavItem href="/about" title="about" />
+        {!user && <NavItem href="/signin" title="login" filled />}
+        {!!user && <NavItem href="/profile" title="profile" />}
       </S.NavSideBySide>
 
       <S.NavGroup>
@@ -39,10 +43,22 @@ export const NavList = () => {
               <GrClose />
             </button>
           </S.CloseButton>
-          <NavItem href="/" title="login" onClick={handleClose} />
+          {!user && (
+            <NavItem href="/signin" title="login" onClick={handleClose} />
+          )}
+          {!!user && (
+            <NavItem href="/profile" title="profile" onClick={handleClose} />
+          )}
           <NavItem href="/" title="home" onClick={handleClose} />
-          <NavItem href="/" title="blog" onClick={handleClose} />
-          <NavItem href="/" title="about" onClick={handleClose} />
+          {!!user && (
+            <NavItem
+              href="/dashboard"
+              title="dashboard"
+              onClick={handleClose}
+            />
+          )}
+
+          <NavItem href="/about" title="about" onClick={handleClose} />
         </S.NavSubGroup>
       </S.NavGroup>
     </S.Container>

@@ -4,13 +4,13 @@ import { ApolloProvider } from '@apollo/client'
 import { ThemeProvider } from 'styled-components'
 
 import { AuthProvider } from 'contexts/AuthContext'
-import { createApolloClient } from 'utils/apollo'
+import { SingletonApolloClient } from 'utils/apollo'
 
 import { GlobalStyles } from '../styles/global'
 import theme from '../styles/theme'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const client = createApolloClient()
+  const client = SingletonApolloClient.getInstance()
 
   return (
     <>

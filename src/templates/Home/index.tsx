@@ -1,19 +1,9 @@
 import { Button } from 'components/single/Button'
-// import { useQueryUsers } from 'graphql/queries/users/load-users'
 import Link from 'next/link'
-// import { useEffect } from 'react'
 
 import * as S from './styles'
 
 export const Home = () => {
-  // const { data } = useQueryUsers()
-
-  // useEffect(() => {
-  //   if (data) {
-  //     console.log(data.sayHello)
-  //   }
-  // }, [data])
-
   return (
     <S.Container>
       <S.Content>

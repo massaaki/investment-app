@@ -65,8 +65,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setUser({
         id: decoded.id
       })
+      Router.push('/dashboard')
     } else {
-      signOut()
+      // signOut()
     }
   }, [])
 
@@ -92,6 +93,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       })
 
       setUser({ id })
+      Router.push('/dashboard')
     } catch (error) {
       console.error('Error(signIn): ', error)
     }
@@ -100,7 +102,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   function signOut() {
     destroyCookie(undefined, 'bullbeardev.token')
     destroyCookie(undefined, 'bullbeardev.refreshToken')
-    Router.push('/')
+    setUser(null)
+    Router.push('/signin')
   }
   return (
     <AuthContext.Provider value={{ signIn, signOut, isAuthenticated, user }}>

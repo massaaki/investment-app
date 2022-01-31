@@ -1,25 +1,44 @@
-import { ApolloClient, HttpLink, InMemoryCache, from } from '@apollo/client'
-import { onError } from '@apollo/client/link/error'
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
+import { parseCookies } from 'nookies'
 
-// let apolloClient: ApolloClient<NormalizedCacheObject | null>;
+const httpLink = createHttpLink({
+  uri: process.env.NEXT_PUBLIC_DB_URL
+})
 
-const errorLink = onError(({ graphQLErrors }) => {
-  if (graphQLErrors) {
-    graphQLErrors.map(({ message }) => {
-      console.log('GraphQL Error: ', message)
-    })
+const authLink = setContext((_, { headers }) => {
+  //restore cookies
+  const { 'bullbeardev.token': token } = parseCookies()
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ''
+    }
   }
 })
 
-const link = from([
-  errorLink,
-  new HttpLink({ uri: process.env.NEXT_PUBLIC_DB_URL })
-])
+export class SingletonApolloClient {
+  private static instance: ApolloClient<any> = null
 
-export function createApolloClient() {
-  return new ApolloClient({
-    ssrMode: typeof window === 'undefined', //if true is client, if false is server
-    link: link,
-    cache: new InMemoryCache()
-  })
+  public static getInstance(): ApolloClient<any> {
+    if (SingletonApolloClient.instance === null) {
+      SingletonApolloClient.instance = new ApolloClient({
+        ssrMode: typeof window === 'undefined', //if true is client, if false is server
+        link: authLink.concat(httpLink),
+        cache: new InMemoryCache()
+      })
+    }
+
+    return SingletonApolloClient.instance
+  }
+
+  public static renewAuthorization() {
+    if (SingletonApolloClient.instance.link) {
+      SingletonApolloClient.instance = new ApolloClient({
+        ssrMode: typeof window === 'undefined', //if true is client, if false is server
+        link: authLink.concat(httpLink),
+        cache: new InMemoryCache()
+      })
+    }
+  }
 }
