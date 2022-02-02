@@ -68,7 +68,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
         id: decoded.id,
         isAdmin: false
       })
-      Router.push('/dashboard')
     } else {
       // signOut()
     }
@@ -87,6 +86,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const { id, token, refreshToken, isAdmin } = response.data
         .login as LoginResponse
 
+      if (!token || refreshToken) {
+        return
+      }
+
       setCookie(undefined, 'bullbeardev.token', token, {
         maxAge: 60 * 60 * 24 * 30, //30 days
         path: '/' //paths that will have this cookie information
@@ -95,8 +98,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
         maxAge: 60 * 60 * 24 * 30, //30 days
         path: '/' //paths that will have this cookie information
       })
-
-      setUser({ id, isAdmin })
+      if (id) {
+        setUser({ id, isAdmin })
+      }
       // Router.push('/dashboard')
     } catch (error) {
       console.error('Error(signIn): ', error)
