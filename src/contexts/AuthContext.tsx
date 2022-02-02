@@ -86,7 +86,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const { id, token, refreshToken, isAdmin } = response.data
         .login as LoginResponse
 
-      if (!token || refreshToken) {
+      if (!token || !refreshToken) {
         return
       }
 
