@@ -1,5 +1,7 @@
-import { MUTATION_CREATE_USER } from 'graphql/mutations/users/create-user'
+import Router from 'next/router'
 import { useMutation } from '@apollo/client'
+
+import { MUTATION_CREATE_USER } from 'graphql/mutations/users/create-user'
 
 import { FormSignup, CreateUserRequest } from 'components/combinated/FormSignup'
 
@@ -20,6 +22,7 @@ export const SignupTemplate = () => {
       }
     })
     setIsloading(false)
+    Router.push('/signin')
     console.log('registerUser..: ', response)
   }
 

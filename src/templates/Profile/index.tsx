@@ -23,7 +23,7 @@ type ResponseRefreshToken = {
 }
 
 export const ProfileTemplate = () => {
-  const { signOut } = useContext(AuthContext)
+  const { signOut, user } = useContext(AuthContext)
   const { data } = useQueryMe()
   const [renewRefreshToken] = useMutation(MUTATION_REFRESH_TOKEN)
   const [createStockMarketIndexDailyVariation] = useMutation(
@@ -95,16 +95,17 @@ export const ProfileTemplate = () => {
         <h1>Profile</h1>
         <p style={{ color: '#fff' }}>Authenticated route</p>
 
-        {!isLoading ? (
+        {user && user.isAdmin && !isLoading && (
           <div style={{ margin: '2rem 0' }}>
             <Button onClick={handleUpdateDailyVariationIndex}>
               Update Market Stock Index
             </Button>
           </div>
-        ) : (
-          <p style={{ color: '#fff' }}>Loading...</p>
         )}
 
+        {user && user.isAdmin && isLoading && (
+          <p style={{ color: '#fff' }}>Loading...</p>
+        )}
         <Button onClick={handleLogout}>Logout</Button>
       </S.Content>
     </S.Container>

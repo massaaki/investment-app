@@ -8,6 +8,7 @@ import { MUTATION_LOGIN } from 'graphql/mutations/session/login'
 
 type User = {
   id: string
+  isAdmin: boolean
 }
 
 type SigninCredentials = {
@@ -28,6 +29,7 @@ type AuthProviderProps = {
 
 type LoginResponse = {
   id: string
+  isAdmin: boolean
   token: string
   refreshToken: string
 }
@@ -62,9 +64,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       // TODO: try refresh token
 
-      setUser({
-        id: decoded.id
-      })
+      // setUser({
+      //   id: decoded.id
+      // })
       Router.push('/dashboard')
     } else {
       // signOut()
@@ -81,7 +83,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       })
       console.log('response', response)
 
-      const { id, token, refreshToken } = response.data.login as LoginResponse
+      const { id, token, refreshToken, isAdmin } = response.data
+        .login as LoginResponse
 
       setCookie(undefined, 'bullbeardev.token', token, {
         maxAge: 60 * 60 * 24 * 30, //30 days
@@ -92,8 +95,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         path: '/' //paths that will have this cookie information
       })
 
-      setUser({ id })
-      Router.push('/dashboard')
+      setUser({ id, isAdmin })
+      // Router.push('/dashboard')
     } catch (error) {
       console.error('Error(signIn): ', error)
     }
