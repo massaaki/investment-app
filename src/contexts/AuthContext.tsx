@@ -5,6 +5,9 @@ import { decode } from 'jsonwebtoken'
 
 import { useMutation } from '@apollo/client'
 import { MUTATION_LOGIN } from 'graphql/mutations/session/login'
+import { QUERY_ME } from 'graphql/queries/users/me'
+import { SingletonApolloClient } from 'utils/apollo'
+import { MUTATION_REFRESH_TOKEN } from 'graphql/mutations/session/refresh-token'
 
 type User = {
   id: string
@@ -39,14 +42,34 @@ type DecodedCookieType = {
   exp: number
 }
 
+type ResponseRefreshToken = {
+  renewRefreshToken: {
+    id: string
+    token: string
+    refreshToken: string
+  }
+}
+
 export const AuthContext = createContext({} as AuthContextData)
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>(null)
   const [login] = useMutation(MUTATION_LOGIN)
   const isAuthenticated = !!user
+  const [renewRefreshToken] = useMutation(MUTATION_REFRESH_TOKEN)
 
-  useEffect(() => {
+  async function getUser(id) {
+    const client = SingletonApolloClient.getInstance()
+    const response = client.query({
+      query: QUERY_ME,
+      variables: {
+        id
+      }
+    })
+    return response
+  }
+
+  async function initializeValuesOnStart() {
     //restore cookies
     const { 'bullbeardev.token': token } = parseCookies()
 
@@ -62,15 +85,60 @@ export function AuthProvider({ children }: AuthProviderProps) {
       console.log('current date:', currentDate)
       console.log('isExpired', isExpired)
 
-      // TODO: try refresh token
+      const { data } = await getUser(decoded.id)
 
+      if (!data) {
+        signOut()
+      }
+
+      if (data.me.error && data.me.error.type === 'jwt expired') {
+        console.log('refreshing token')
+        renewExpiredToken()
+        SingletonApolloClient.renewAuthorization()
+      }
+
+      const { id, isAdmin } = data.me.result
+      console.log('data.me..:', data.me)
       setUser({
-        id: decoded.id,
-        isAdmin: false
+        id,
+        isAdmin
       })
     } else {
-      // signOut()
+      signOut()
     }
+  }
+
+  async function renewExpiredToken() {
+    const { 'bullbeardev.refreshToken': refreshToken } = parseCookies()
+
+    const { data: dataRefresh } = await renewRefreshToken({
+      variables: {
+        refreshToken
+      }
+    })
+
+    const result = dataRefresh as ResponseRefreshToken
+
+    setCookie(undefined, 'bullbeardev.token', result.renewRefreshToken.token, {
+      maxAge: 60 * 60 * 24 * 30, //30 days
+      path: '/' //paths that will have this cookie information
+    })
+    setCookie(
+      undefined,
+      'bullbeardev.refreshToken',
+      result.renewRefreshToken.refreshToken,
+      {
+        maxAge: 60 * 60 * 24 * 30, //30 days
+        path: '/' //paths that will have this cookie information
+      }
+    )
+
+    // console.log(result)
+    // console.log(data.sayHello)
+  }
+
+  useEffect(() => {
+    initializeValuesOnStart()
   }, [])
 
   async function signIn({ email, password }: SigninCredentials) {

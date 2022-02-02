@@ -10,6 +10,7 @@ export const QUERY_ME = gql`
         id
         name
         email
+        isAdmin
       }
     }
   }
