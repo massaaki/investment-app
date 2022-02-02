@@ -7,7 +7,6 @@ export const MUTATION_CREATE_STOCK_MARKET_INDEX_VARIATION = gql`
         type
       }
       result {
-        code
         value
       }
     }

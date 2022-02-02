@@ -8,7 +8,7 @@ import { MUTATION_LOGIN } from 'graphql/mutations/session/login'
 
 type User = {
   id: string
-  isAdmin: boolean
+  isAdmin?: boolean
 }
 
 type SigninCredentials = {
@@ -29,7 +29,7 @@ type AuthProviderProps = {
 
 type LoginResponse = {
   id: string
-  isAdmin: boolean
+  isAdmin?: boolean
   token: string
   refreshToken: string
 }
@@ -64,9 +64,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       // TODO: try refresh token
 
-      // setUser({
-      //   id: decoded.id
-      // })
+      setUser({
+        id: decoded.id,
+        isAdmin: false
+      })
       Router.push('/dashboard')
     } else {
       // signOut()
