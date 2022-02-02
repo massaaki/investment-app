@@ -1,8 +1,11 @@
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { setCookie, parseCookies } from 'nookies'
 
 import { MUTATION_REFRESH_TOKEN } from 'graphql/mutations/session/refresh-token'
+
+import { MUTATION_CREATE_STOCK_MARKET_INDEX_VARIATION } from 'graphql/mutations/admin/stock-market-index-daily-variation/request-market-index-daily-variation-update'
+
 import { useQueryMe } from 'graphql/queries/users/me'
 import { AuthContext } from 'contexts/AuthContext'
 
@@ -23,6 +26,10 @@ export const ProfileTemplate = () => {
   const { signOut } = useContext(AuthContext)
   const { data } = useQueryMe()
   const [renewRefreshToken] = useMutation(MUTATION_REFRESH_TOKEN)
+  const [createStockMarketIndexDailyVariation] = useMutation(
+    MUTATION_CREATE_STOCK_MARKET_INDEX_VARIATION
+  )
+  const [isLoading, setIsloading] = useState(false)
 
   async function RenewExpiredToken() {
     const { 'bullbeardev.refreshToken': refreshToken } = parseCookies()
@@ -57,6 +64,17 @@ export const ProfileTemplate = () => {
     signOut()
   }
 
+  async function handleUpdateDailyVariationIndex() {
+    setIsloading(true)
+    const response = await createStockMarketIndexDailyVariation({
+      variables: {
+        code: 'IBOV'
+      }
+    })
+    setIsloading(false)
+    console.log('response..:', response)
+  }
+
   useEffect(() => {
     console.log('constructor')
     if (data) {
@@ -75,7 +93,18 @@ export const ProfileTemplate = () => {
     <S.Container>
       <S.Content>
         <h1>Profile</h1>
-        <p>Protected</p>
+        <p style={{ color: '#fff' }}>Authenticated route</p>
+
+        {!isLoading ? (
+          <div style={{ margin: '2rem 0' }}>
+            <Button onClick={handleUpdateDailyVariationIndex}>
+              Update Market Stock Index
+            </Button>
+          </div>
+        ) : (
+          <p style={{ color: '#fff' }}>Loading...</p>
+        )}
+
         <Button onClick={handleLogout}>Logout</Button>
       </S.Content>
     </S.Container>
