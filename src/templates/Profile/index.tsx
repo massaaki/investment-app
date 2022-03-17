@@ -23,7 +23,7 @@ export const ProfileTemplate = () => {
     setIsloading(true)
     const response = await createStockMarketIndexDailyVariation({
       variables: {
-        code: 'IBOV'
+        code: 'IBOV11.SA'
       }
     })
     setIsloading(false)
