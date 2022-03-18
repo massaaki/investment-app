@@ -3,11 +3,19 @@ import { GetStaticProps } from 'next'
 import { DashboardTemplate } from 'templates/Dashboard'
 import { SingletonApolloClient } from 'utils/apollo'
 
-export default function DashboardPage() {
-  return <DashboardTemplate />
+import { StocksProtocol } from 'interfaces/stocks-protocol'
+
+export type DashboardPageProps = {
+  stockIndexHistory: StocksProtocol
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export default function DashboardPage({
+  stockIndexHistory
+}: DashboardPageProps) {
+  return <DashboardTemplate stockIndexHistory={stockIndexHistory} />
+}
+
+export const getStaticProps: GetStaticProps = async () => {
   const client = SingletonApolloClient.getInstance()
 
   const { data } = await client.query({
@@ -17,10 +25,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   })
 
-  console.log('data..:', data.getListStockMarketIndexVariation.result)
+  const stockIndexHistory: StocksProtocol = {
+    code: 'IBOV11.SA',
+    history: data.getListStockMarketIndexVariation.result.map((stock) => ({
+      value: stock.value,
+      min: stock.min,
+      max: stock.max,
+      created_at: stock.created_at
+    }))
+  }
 
   return {
-    props: {},
+    props: { stockIndexHistory },
     revalidate: 60 * 12
   }
 }
