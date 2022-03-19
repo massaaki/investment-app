@@ -11,7 +11,6 @@ export const DashboardTemplate = ({
   const [data, setData] = useState<StocksProtocol>(null)
 
   useEffect(() => {
-    console.log(stockIndexHistory)
     if (stockIndexHistory) {
       setData({
         code: stockIndexHistory.code,
