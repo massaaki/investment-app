@@ -106,7 +106,7 @@ export const GlobalStyles: GlobalStyleComponent<
       font-family: ${theme.font.family};
       font-weight: ${theme.font.weights.medium};
       font-size: ${theme.font.sizes.medium};
-      background: ${theme.colors.gray800};
+      /* background: ${theme.colors.gray800}; */
     }
     button,
     a {

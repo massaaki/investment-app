@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps = async () => {
       value: stock.value,
       min: stock.min,
       max: stock.max,
-      created_at: stock.created_at
+      created_at: Number(stock.created_at)
     }))
   }
 

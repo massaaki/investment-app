@@ -13,7 +13,7 @@ export const BarChart = ({ data }: BarChartProps) => {
   const d3Chart = useRef()
   const dimensions = {
     margin: 200,
-    width: 800,
+    width: window.innerWidth < 800 ? window.innerWidth : 800,
     height: 400
   }
 
@@ -26,7 +26,7 @@ export const BarChart = ({ data }: BarChartProps) => {
       .attr('x', dimensions.width / 2 - 55)
       .attr('y', 80)
       .attr('font-size', '24px')
-      .text('Ibovespa')
+      .text(data.code)
 
     const xScale = d3.scaleBand().range([0, dimensions.width]).padding(0.4)
 

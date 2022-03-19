@@ -1,7 +1,13 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
-  .bar {
-    fill: navy;
-  }
+  ${({ theme }) => css`
+    .bar {
+      fill: ${theme.colors.blue200};
+    }
+    text {
+      fill: ${theme.colors.white500};
+      font-size: 16px;
+    }
+  `}
 `
