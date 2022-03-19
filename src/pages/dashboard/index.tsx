@@ -12,6 +12,7 @@ export type DashboardPageProps = {
 export default function DashboardPage({
   stockIndexHistory
 }: DashboardPageProps) {
+  if (!stockIndexHistory) return <></>
   return <DashboardTemplate stockIndexHistory={stockIndexHistory} />
 }
 

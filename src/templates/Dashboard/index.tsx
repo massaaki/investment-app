@@ -25,7 +25,7 @@ export const DashboardTemplate = ({
     }
   }, [stockIndexHistory])
 
-  if (data) {
+  if (data && data.history.length > 0) {
     return (
       <S.Container>
         <S.Content>
