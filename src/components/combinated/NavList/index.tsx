@@ -23,7 +23,7 @@ export const NavList = () => {
     <S.Container>
       <S.NavSideBySide>
         <NavItem href="/" title="home" />
-        {!!user && <NavItem href="/dashboard" title="dashboard" />}
+        <NavItem href="/dashboard" title="dashboard" />
         {/* <NavItem href="/about" title="about" /> */}
         {!user && <NavItem href="/signin" title="login" filled />}
         {!!user && <NavItem href="/profile" title="profile" />}
@@ -50,13 +50,8 @@ export const NavList = () => {
             <NavItem href="/profile" title="profile" onClick={handleClose} />
           )}
           <NavItem href="/" title="home" onClick={handleClose} />
-          {!!user && (
-            <NavItem
-              href="/dashboard"
-              title="dashboard"
-              onClick={handleClose}
-            />
-          )}
+
+          <NavItem href="/dashboard" title="dashboard" onClick={handleClose} />
 
           {/* <NavItem href="/about" title="about" onClick={handleClose} /> */}
         </S.NavSubGroup>
