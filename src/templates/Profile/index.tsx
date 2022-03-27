@@ -19,11 +19,11 @@ export const ProfileTemplate = () => {
     signOut()
   }
 
-  async function handleUpdateDailyVariationIndex() {
+  async function handleUpdateDailyVariationIndex(code: string) {
     setIsloading(true)
     const response = await createStockMarketIndexDailyVariation({
       variables: {
-        code: 'IBOV11.SA'
+        code
       }
     })
     setIsloading(false)
@@ -38,8 +38,10 @@ export const ProfileTemplate = () => {
 
         {user && user.isAdmin && !isLoading && (
           <div style={{ margin: '2rem 0' }}>
-            <Button onClick={handleUpdateDailyVariationIndex}>
-              Update Market Stock Index
+            <Button
+              onClick={() => handleUpdateDailyVariationIndex('IBOV11.SA')}
+            >
+              Update Market Stock Index Ibovespa
             </Button>
           </div>
         )}
@@ -47,6 +49,7 @@ export const ProfileTemplate = () => {
         {user && user.isAdmin && isLoading && (
           <p style={{ color: '#fff' }}>Loading...</p>
         )}
+
         <Button onClick={handleLogout}>Logout</Button>
       </S.Content>
     </S.Container>
