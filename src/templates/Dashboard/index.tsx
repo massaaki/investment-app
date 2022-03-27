@@ -9,6 +9,8 @@ export const DashboardTemplate = ({
   stockIndexHistory
 }: DashboardPageProps) => {
   const [data, setData] = useState<StocksProtocol>(null)
+  const [minVal, setMinVal] = useState<number>(0)
+  const [maxVal, setMaxVal] = useState<number>(0)
 
   useEffect(() => {
     if (stockIndexHistory) {
@@ -21,6 +23,21 @@ export const DashboardTemplate = ({
           created_at: new Date(stock.created_at)
         }))
       })
+
+      let min = 99999999
+      let max = 0
+
+      stockIndexHistory.history.forEach((stock) => {
+        if (stock.value < min) {
+          min = stock.value
+        }
+        if (stock.value > max) {
+          max = stock.value
+        }
+      })
+
+      setMinVal(min)
+      setMaxVal(max)
     }
   }, [stockIndexHistory])
 
@@ -29,7 +46,35 @@ export const DashboardTemplate = ({
       <S.Container>
         <S.Content>
           <h1>Dashboard</h1>
-          <BarChart data={data} />
+          <S.Wrapper>
+            <BarChart data={data} />
+            <S.Info>
+              <li>
+                <h2>Current value</h2>
+                <div>
+                  {new Intl.NumberFormat('pt-br', {
+                    style: 'decimal'
+                  }).format(data.history[0].value)}
+                </div>
+              </li>
+              <li>
+                <h2>Min</h2>
+                <div>
+                  {new Intl.NumberFormat('pt-br', {
+                    style: 'decimal'
+                  }).format(minVal)}
+                </div>
+              </li>
+              <li>
+                <h2>Max</h2>
+                <div>
+                  {new Intl.NumberFormat('pt-br', {
+                    style: 'decimal'
+                  }).format(maxVal)}
+                </div>
+              </li>
+            </S.Info>
+          </S.Wrapper>
         </S.Content>
       </S.Container>
     )

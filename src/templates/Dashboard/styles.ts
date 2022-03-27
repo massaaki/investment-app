@@ -25,3 +25,40 @@ export const Content = styled.div`
     }
   `}
 `
+
+export const Info = styled.ul`
+  ${({ theme }) => css`
+    width: 250px;
+    li {
+      color: ${theme.colors.white500};
+      margin: ${theme.spacings.xxsmall};
+      background: rgba(255, 255, 255, 0.06);
+      padding: ${theme.spacings.small};
+      width: 100%;
+      border-radius: 7px;
+
+      h2 {
+        font-size: ${theme.font.sizes.small};
+      }
+      > div {
+        font-size: ${theme.font.sizes.xxlarge};
+        font-weight: 900;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  `}
+`
+
+export const Wrapper = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    @media (max-width: 720px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  `}
+`
