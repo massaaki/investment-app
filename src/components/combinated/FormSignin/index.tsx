@@ -56,7 +56,7 @@ export const FormSignin = ({
         <TextField
           name="password"
           placeholder="password"
-          type="text"
+          type="password"
           onInputChange={(v) => onInputChange('password', v)}
         />
         <Button as="button" type="submit" fullWidth>
