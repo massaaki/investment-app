@@ -28,7 +28,7 @@ export const Content = styled.div`
 
 export const Info = styled.ul`
   ${({ theme }) => css`
-    width: 250px;
+    width: 220px;
     li {
       color: ${theme.colors.white500};
       margin: ${theme.spacings.xxsmall};
@@ -59,6 +59,32 @@ export const Wrapper = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: center;
+    }
+  `}
+`
+export const Header = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.white500};
+    background: rgba(255, 255, 255, 0.06);
+    width: 100%;
+    margin: ${theme.spacings.xxlarge} 0;
+    border-radius: 7px;
+    padding: ${theme.spacings.small};
+    ul {
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        h2 {
+          font-size: ${theme.font.sizes.medium};
+        }
+        div {
+          font-size: ${theme.font.sizes.xlarge};
+          font-weight: bold;
+        }
+      }
     }
   `}
 `

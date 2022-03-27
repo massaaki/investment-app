@@ -45,7 +45,15 @@ export const DashboardTemplate = ({
     return (
       <S.Container>
         <S.Content>
-          <h1>Dashboard</h1>
+          <S.Header>
+            <ul>
+              <li>
+                <h2>BOV11.SA</h2>
+                <div>120.474</div>
+              </li>
+            </ul>
+          </S.Header>
+
           <S.Wrapper>
             <BarChart data={data} />
             <S.Info>

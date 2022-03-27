@@ -44,7 +44,7 @@ export const BarChart = ({ data }: BarChartProps) => {
       })
     )
 
-    const yMax = d3.max(data.history, function (d: any): number {
+    const yMax = d3.max(data.history, function (d: any): any {
       return Number(d.value) + 20000
     })
 
@@ -58,7 +58,10 @@ export const BarChart = ({ data }: BarChartProps) => {
       d3
         .axisLeft(yScale)
         .tickFormat(function (d: any) {
-          return d
+          const val = new Intl.NumberFormat('pt-br', {
+            style: 'decimal'
+          }).format(d)
+          return val
         })
         .ticks(6)
     )
