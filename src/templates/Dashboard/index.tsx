@@ -1,4 +1,4 @@
-import { BarChart } from 'components/single/BarChart'
+import { SimpleLineChart } from 'components/single/SimpleLineChart'
 import { StocksProtocol } from 'interfaces/stocks-protocol'
 import { DashboardPageProps } from 'pages/dashboard'
 import { useEffect, useState } from 'react'
@@ -55,7 +55,7 @@ export const DashboardTemplate = ({
           </S.Header>
 
           <S.Wrapper>
-            <BarChart data={data} />
+            <SimpleLineChart data={data} />
             <S.Info>
               <li>
                 <h2>Current value</h2>
