@@ -26,6 +26,7 @@ export const ProfileTemplate = () => {
         code
       }
     })
+
     setIsloading(false)
     console.log('response..:', response)
   }
@@ -37,13 +38,22 @@ export const ProfileTemplate = () => {
         <p style={{ color: '#fff' }}>Authenticated route</p>
 
         {user && user.isAdmin && !isLoading && (
-          <div style={{ margin: '2rem 0' }}>
-            <Button
-              onClick={() => handleUpdateDailyVariationIndex('IBOV11.SA')}
-            >
-              Update Market Stock Index Ibovespa
-            </Button>
-          </div>
+          <>
+            <div style={{ margin: '2rem 0' }}>
+              <Button
+                onClick={() => handleUpdateDailyVariationIndex('IBOV11.SA')}
+              >
+                Update Market Stock Index Ibovespa
+              </Button>
+            </div>
+            <div style={{ margin: '2rem 0' }}>
+              <Button
+                onClick={() => handleUpdateDailyVariationIndex('IFIX.SA')}
+              >
+                Update Market Stock Index Ifix
+              </Button>
+            </div>
+          </>
         )}
 
         {user && user.isAdmin && isLoading && (

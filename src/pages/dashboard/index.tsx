@@ -6,14 +6,14 @@ import { SingletonApolloClient } from 'utils/apollo'
 import { StocksProtocol } from 'interfaces/stocks-protocol'
 
 export type DashboardPageProps = {
-  stockIndexHistory: StocksProtocol
+  stockIndexesHistory: StocksProtocol[]
 }
 
 export default function DashboardPage({
-  stockIndexHistory
+  stockIndexesHistory
 }: DashboardPageProps) {
-  if (!stockIndexHistory) return <></>
-  return <DashboardTemplate stockIndexHistory={stockIndexHistory} />
+  if (!stockIndexesHistory) return <></>
+  return <DashboardTemplate stockIndexesHistory={stockIndexesHistory} />
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -26,18 +26,20 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   })
 
-  const stockIndexHistory: StocksProtocol = {
-    code: 'IBOV11.SA',
-    history: data.getListStockMarketIndexVariation.result.map((stock) => ({
-      value: stock.value,
-      min: stock.min,
-      max: stock.max,
-      created_at: Number(stock.created_at)
-    }))
-  }
+  const stockIndexesHistory: StocksProtocol[] = [
+    {
+      code: 'IBOV11.SA',
+      history: data.getListStockMarketIndexVariation.result.map((stock) => ({
+        value: stock.value,
+        min: stock.min,
+        max: stock.max,
+        created_at: Number(stock.created_at)
+      }))
+    }
+  ]
 
   return {
-    props: { stockIndexHistory },
+    props: { stockIndexesHistory },
     revalidate: 60 * 12
   }
 }

@@ -6,17 +6,18 @@ import { useEffect, useState } from 'react'
 import * as S from './styles'
 
 export const DashboardTemplate = ({
-  stockIndexHistory
+  stockIndexesHistory
 }: DashboardPageProps) => {
   const [data, setData] = useState<StocksProtocol>(null)
   const [minVal, setMinVal] = useState<number>(0)
   const [maxVal, setMaxVal] = useState<number>(0)
+  const [index, setIndex] = useState(0)
 
   useEffect(() => {
-    if (stockIndexHistory) {
+    if (stockIndexesHistory) {
       setData({
-        code: stockIndexHistory.code,
-        history: stockIndexHistory.history.map((stock) => ({
+        code: stockIndexesHistory[index].code,
+        history: stockIndexesHistory[index].history.map((stock) => ({
           value: stock.value,
           max: stock.max,
           min: stock.min,
@@ -27,7 +28,7 @@ export const DashboardTemplate = ({
       let min = 99999999
       let max = 0
 
-      stockIndexHistory.history.forEach((stock) => {
+      stockIndexesHistory[index].history.forEach((stock) => {
         if (stock.value < min) {
           min = stock.value
         }
@@ -39,7 +40,7 @@ export const DashboardTemplate = ({
       setMinVal(min)
       setMaxVal(max)
     }
-  }, [stockIndexHistory])
+  }, [stockIndexesHistory])
 
   if (data && data.history.length > 0) {
     return (
@@ -48,7 +49,7 @@ export const DashboardTemplate = ({
           <S.Header>
             <ul>
               <li>
-                <h2>BOV11.SA</h2>
+                <h2>BOV11.SAs</h2>
                 <div>120.474</div>
               </li>
             </ul>

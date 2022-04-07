@@ -20,16 +20,18 @@ export type ButtonProps = {
 export const Button = forwardRef<S.WrapperProps, ButtonProps>(
   ({ children, size = 'medium', fullWidth = false, icon, ...props }, ref) => {
     return (
-      <S.Wrapper
-        ref={ref}
-        size={size}
-        hasIcon={!!icon}
-        fullWidth={fullWidth}
-        {...props}
-      >
-        {!!icon && icon}
-        {!!children && <span>{children}</span>}
-      </S.Wrapper>
+      <>
+        <S.Wrapper
+          ref={ref}
+          size={size}
+          hasIcon={!!icon}
+          fullWidth={fullWidth}
+          {...props}
+        >
+          {!!icon && icon}
+          {!!children && <span>{children}</span>}
+        </S.Wrapper>
+      </>
     )
   }
 )

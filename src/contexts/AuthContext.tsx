@@ -179,7 +179,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     destroyCookie(undefined, 'bullbeardev.token')
     destroyCookie(undefined, 'bullbeardev.refreshToken')
     setUser(null)
-    Router.push('/signin')
+    // Router.push('/signin')
   }
   return (
     <AuthContext.Provider value={{ signIn, signOut, isAuthenticated, user }}>
